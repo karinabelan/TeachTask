@@ -1,0 +1,40 @@
+﻿@model TeachTask.Models.ResourceModels
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h1>All Resourses</h1>
+
+<table class="table table-sm">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Primary</th>
+            <th>Secondary</th>
+            <th></th>
+        </tr>
+        @if (Model.ResourceList.Count > 0)
+        {
+            foreach (var item in Model.ResourceList)
+            {
+                <tr>
+                    <td>@item.ResourcesId</td>
+                    <td>@item.PrimaryId</td>
+                    <td>@item.SecondaryId</td>
+                    <td>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="5">Sorry no record found</td>
+            </tr>
+        }
+
+    </thead>
+    <input type="button" onclick="location.href='/Resource/PrimarySecondary/';" value="Resources" />
+    <input type="button" onclick="location.href='/Product/Index/';" value="Client" />
+</table>

@@ -1,0 +1,53 @@
+﻿@model TeachTask.Models.DigitalImageModels
+@{
+    ViewData["Title"] = "Home Page";
+}
+@if (TempData["SaveStatus"] != null)
+{
+    int status = Convert.ToInt32(TempData["SaveStatus"]);
+    if (status == 1)
+    {
+        <span class="alert alert-success">Data saved successfully</span>
+    }
+    else
+    {
+        <span class="alert alert-danger">Error! While saving  data</span>
+    }
+}
+<br />
+<br />
+<h1>All Info</h1>
+<a href="/Home/Save">Add New Info</a>
+<table class="table table-sm">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Client Id</th>
+            <th>Resources Id</th>
+            <th></th>
+        </tr>
+        @if (Model.DigitalImageList.Count > 0)
+        {
+            foreach (var item in Model.DigitalImageList)
+            {
+                <tr>
+                    <td>@item.DigitalImagesId</td>
+                    <td>@item.GraphicProductId</td>
+                    <td>@item.ResourcesId</td>
+
+                    <td>
+                        <a href="/Resource/Index/">Resources</a>&nbsp;|&nbsp;
+                        <a href="/Product/Index/">Client</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="5">Sorry no record found</td>
+            </tr>
+        }
+    </thead>
+
+</table>

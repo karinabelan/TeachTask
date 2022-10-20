@@ -1,0 +1,73 @@
+﻿@model TeachTask.Models.GraphicProductModels
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<br />
+@{
+    @if (TempData["SaveStatus"] != null)
+    {
+        int status = Convert.ToInt32(TempData["SaveStatus"]);
+        if (status == 1)
+        {
+            <span class="alert alert-success">Data saved successfully</span>
+        }
+        else
+        {
+            <span class="alert alert-danger">Error! While saving  data</span>
+        }
+    }
+    @if (TempData["DeleteStatus"] != null)
+    {
+        int status = Convert.ToInt32(TempData["DeleteStatus"]);
+        if (status == 1)
+        {
+            <span class="alert alert-success">Data deleted successfully</span>
+        }
+        else
+        {
+            <span class="alert alert-danger">Error! While deleting  data</span>
+        }
+    }
+}
+<br />
+<br />
+<h1>Client</h1>
+<br />
+<a href="/Product/Save">Add New Person</a>
+<br />
+<table class="table table-sm">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th></th>
+        </tr>
+        @if (Model.GraphicProductsList.Count > 0)
+        {
+            foreach (var item in Model.GraphicProductsList)
+            {
+                <tr>
+                    <td>@item.GraphicProductId</td>
+                    <td>@item.Name</td>
+                    <td>@item.Email</td>
+                    <td>
+                        <a href="/Home/Index/">Information</a>&nbsp;|&nbsp;
+                        <a href="/Home/Save/">Add info</a>&nbsp;|&nbsp;
+                        <a href="/Product/Delete/?Id=@item.GraphicProductId">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="5">Sorry no record found</td>
+            </tr>
+        }
+    </thead>
+
+</table>

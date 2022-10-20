@@ -1,0 +1,20 @@
+﻿@model TeachTask.Models.DigitalImage
+
+@using (Html.BeginForm("Save", "Home", FormMethod.Post))
+{
+    <table width="40%">
+        <tr>
+            <td style="width:20%">Client Id:</td>
+            <td style="width:80%">
+                @Html.TextBoxFor(m=>m.GraphicProductId,new{@class="form-control"})
+            </td>
+        </tr>
+        <tr>
+            <td style="width:20%">Resource Id:</td>
+            <td style="width:80%">
+                @Html.TextBoxFor(m=>m.ResourcesId,new{@class="form-control"})
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="Save" />
+}
